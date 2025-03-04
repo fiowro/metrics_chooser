@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+clean:
+	@# Nothing to do
+
+build:
+	@# Nothing to do
+
+binary:
+	mkdir -p debian/metrics-chooser
+	mkdir -p debian/metrics-chooser/usr/bin
+	mkdir -p debian/metrics-chooser/usr/share/doc
+	cp metrics_chooser.sh debian/metrics-chooser/usr/bin/metrics_chooser.sh
+	cp LICENSE debian/metrics-chooser/usr/share/doc/metrics-chooser
+	cp README.md debian/metrics-chooser/usr/share/doc/metrics-chooser
+	dh_gencontrol
+	dh_builddeb

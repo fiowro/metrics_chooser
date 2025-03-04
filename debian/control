@@ -1,0 +1,16 @@
+Source: metrics-chooser
+Section: utils
+Priority: optional
+Maintainer: Dmitriy Kostiuk <dmitriykostiuk@gmail.com>
+Build-Depends: debhelper (>=9)
+
+Package: metrics-chooser
+Architecture: all
+Depends: gum
+Homepage: <https://github.com/fiowro/metrics-chooser>
+Description: Server metrics Chooser
+ Metrics Chooser is a simple bash script which asks what
+ data should be collected on the server (e.g., RAM, CPU,
+ free space, etc.).
+ .
+ It uses Gum to create text user interface.
