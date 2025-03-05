@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh 'rpmbuild --build-in-place --define "_topdir $(pwd)/rpm" --define "_sourcedir $(pwd)" -bb rpm/metrics-chooser.spec'
                 unstash 'debPackage' 
-                archiveArtifacts '**/*.rpm', '**/*.deb'
+                archiveArtifacts '**/*.rpm , **/*.deb'
                 }
         }
     }
