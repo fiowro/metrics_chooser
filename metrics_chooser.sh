@@ -31,13 +31,12 @@ chosen_metrics=$(gum choose --no-limit --header "Select which server metrics to 
 # Check if the user made a selection
 if [[ -z "$chosen_metrics" ]]; then
     echo "No metrics selected"
-    exit 1
+    > $file
+else
+    # Output the selected parameters
+    echo "Following metrics were selected:"
+    echo "$chosen_metrics"
+    echo "$chosen_metrics" > $file
 fi
 
-echo The amount of chosen items: "$chosen_metrics" | wc -l
-
-# Output the selected parameters
-echo "Following metrics were selected:"
-echo "$chosen_metrics"
-echo "$chosen_metrics" > $file
-echo "Selected metrics saved to \"$(realpath $file)\" file"
+echo "Result of your choice saved to \"$(realpath $file)\" file"
