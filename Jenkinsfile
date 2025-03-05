@@ -9,15 +9,18 @@ pipeline {
         
         stage('Build DEB') {
             steps {
-                sh 'dpkg-buildpackage -b'
-                
+                sh 'dpkg-buildpackage -b'                
+                stash includes: '**/*.deb', name: 'debPackage'
             }
-
-            post {
-                success {
-                    archiveArtifacts '**/*.deb'
+ 
+        }
+        
+        stage('Build RPM') {
+            steps {
+                sh 'rpmbuild --build-in-place --define "_topdir $(pwd)/rpm" --define "_sourcedir $(pwd)" -bb rpm/metrics-chooser.spec'
+                unstash 'debPackage' 
+                archiveArtifacts '**/*.rpm', '**/*.deb'
                 }
-            }
         }
     }
 }
